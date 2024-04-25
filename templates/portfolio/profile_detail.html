@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ profile.user.username }}'s Profile</title>
+</head>
+<body>
+    <h1>{{ profile.user.username }}'s Profile</h1>
+    <p>Name: {{ profile.name }}</p>
+    <p>Age: {{ profile.age }}</p>
+    <p>Rating: {{ profile.rating }}</p>
+    <p>{{ profile.bio }}</p>
+
+    <h2>Photos</h2>
+    <ul>
+    {% for photo in photos %}
+        <li>
+            <img src="{{ photo.image.url }}" alt="Photo">
+            <p>Tags: {{ photo.tags }}</p>
+        </li>
+    {% endfor %}
+    </ul>
+
+{#    <h2>Фотографии профиля</h2>#}
+{#       <ul>#}
+{#    {% for photo in profile.photos.all %}#}
+{#        <li>#}
+{#            <img src="{{ photo.image.url }}" alt="Photo">#}
+{#            <p>Tags: {{ photo.tags }}</p>#}
+{#        </li>#}
+{#    {% endfor %}#}
+{#    </ul>#}
+    <div class="profile-image">
+        <img src="{{ profile.photo.url }}" alt="{{ profile.user.username }}">
+    </div>
+</body>
+</html>
+{% endblock %}

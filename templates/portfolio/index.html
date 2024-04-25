@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    <h1>Выберите пол:</h1>
+    <form action="{% url 'portfolio:index' %}" method="GET">
+        <select name="gender">
+            <option value="male">Мужчина</option>
+            <option value="female">Женщина</option>
+        </select>
+        <button type="submit">Применить</button>
+    </form>
+
+    <h2>Портфолио:</h2>
+    <ul class="portfolio-list">
+        {% for profile in profiles %}
+            <li class="profile-item">
+                <a href="{{ profile.get_absolute_url }}" class="profile-link">
+                    <div class="profile-info">
+                        <p class="profile-name">{{ profile.user.username }}</p>
+                        <p class="profile-age">{{ profile.age }} лет</p>
+                    </div>
+                    <img src="{{ profile.photo.url }}" alt="{{ profile.user.username }}" class="profile-photo">
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
+
+<style>
+    .portfolio-list {
+        list-style: none;
+        padding: 0;
+    }
+
+    .profile-item {
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        overflow: hidden;
+    }
+
+    .profile-info {
+        padding: 10px;
+        background-color: #f9f9f9;
+    }
+
+    .profile-name {
+        margin: 0;
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    .profile-age {
+        margin: 5px 0;
+        color: #888;
+    }
+
+    .profile-link {
+        display: block;
+        text-decoration: none; /* Добавляем стиль ссылке */
+    }
+
+    .profile-photo {
+        max-width: 100px; /* Максимальная ширина фото */
+        max-height: 100px; /* Максимальная высота фото */
+        width: auto;
+        height: auto;
+    }
+</style>
