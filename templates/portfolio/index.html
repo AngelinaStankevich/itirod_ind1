@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block content %}
-    <h1>Выберите пол:</h1>
+    <h1 style="color: white;">Выберите пол:</h1>
     <form action="{% url 'portfolio:index' %}" method="GET">
         <select name="gender">
             <option value="male">Мужчина</option>
@@ -11,7 +11,7 @@
         <button type="submit">Применить</button>
     </form>
 
-    <h2>Портфолио:</h2>
+    <h2 style="color: white;">Портфолио:</h2>
     <ul class="portfolio-list">
         {% for profile in profiles %}
             <li class="profile-item">
@@ -66,5 +66,8 @@
         max-height: 100px; /* Максимальная высота фото */
         width: auto;
         height: auto;
+    }
+    h1, h2 {
+        color: white;
     }
 </style>

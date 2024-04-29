@@ -18,6 +18,20 @@ typing-extensions = {version = ">=4", markers = "python_version < \"3.11\""}
 tests = ["mypy (>=0.800)", "pytest", "pytest-asyncio"]
 
 [[package]]
+name = "confusable-homoglyphs"
+version = "3.3.1"
+description = "Detect confusable usage of unicode homoglyphs, prevent homograph attacks."
+optional = false
+python-versions = "*"
+files = [
+    {file = "confusable_homoglyphs-3.3.1-py2.py3-none-any.whl", hash = "sha256:84c92cb79dc7f55aa290d0762b2349abd8dee4c16fbe6f99eac978d394e2e6a1"},
+    {file = "confusable_homoglyphs-3.3.1.tar.gz", hash = "sha256:b995001c9b2e1b4cea0cf5f3840a7c79188a8cbbad053d693572bd8c1c1ec460"},
+]
+
+[package.extras]
+cli = ["click"]
+
+[[package]]
 name = "django"
 version = "5.0.4"
 description = "A high-level Python web framework that encourages rapid development and clean, pragmatic design."
@@ -36,6 +50,25 @@ tzdata = {version = "*", markers = "sys_platform == \"win32\""}
 [package.extras]
 argon2 = ["argon2-cffi (>=19.1.0)"]
 bcrypt = ["bcrypt"]
+
+[[package]]
+name = "django-registration"
+version = "3.4"
+description = "An extensible user-registration application for Django."
+optional = false
+python-versions = ">=3.7"
+files = [
+    {file = "django-registration-3.4.tar.gz", hash = "sha256:1a0ccef7ef71e67a78a551abd8ad378977dc14a036f1fcd8be422a68bd5254a9"},
+    {file = "django_registration-3.4-py3-none-any.whl", hash = "sha256:fa76df481189794f47eb73043ee5cc9bfb0963194b901d7bd8cf914beab1ddd0"},
+]
+
+[package.dependencies]
+confusable-homoglyphs = ">=3.0,<4.0"
+Django = ">=3.2,<4.0.dev0 || >=4.1.dev0"
+
+[package.extras]
+docs = ["furo", "sphinx", "sphinx-copybutton", "sphinx-inline-tabs", "sphinx-notfound-page", "sphinxcontrib-django", "sphinxext-opengraph"]
+tests = ["coverage", "tomli"]
 
 [[package]]
 name = "psycopg2-binary"
@@ -155,4 +188,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "988dfb93d926659665ac546702ae4cf9007a269538923eef849eafb7982744cb"
+content-hash = "462c6e749a2bb893e1cebb7c3aafa8e0086fca2eac9497fe2b72511c42771fba"
