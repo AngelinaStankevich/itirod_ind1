@@ -1,7 +1,35 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
-
-    <h1> You have registered</h1>
-
+    <div class="registration-message">
+        <img src="{% static 'img/successs.jpg' %}" alt="Success" class="success-icon">
+        <h1 class="success-heading">Поздравляем!</h1>
+        <p class="success-text">Вы успешно зарегистрировались.</p>
+    </div>
 {% endblock %}
+
+<style>
+    .registration-message {
+        text-align: center;
+        margin-top: 50px;    }
+
+    .success-icon {
+        width: 100px;
+        height: 100px;
+        margin-bottom: 20px;
+    }
+
+    .success-heading {
+        font-family: 'Roboto', sans-serif;
+        font-size: 36px;
+        color: #4CAF50;
+        margin-bottom: 10px;
+    }
+
+    .success-text {
+        font-family: 'Roboto', sans-serif;
+        font-size: 18px;
+        color: #333;
+    }
+</style>

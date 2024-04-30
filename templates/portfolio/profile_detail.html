@@ -8,35 +8,82 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ profile.user.username }}'s Profile</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        #profile-container {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 800px;
+        }
+
+        h1, h2 {
+            color: #842cbe;
+        }
+
+        p {
+            color: #666;
+        }
+
+        .bio-container {
+            border: 2px solid #fab3b3; /* Цвет и толщина рамки */
+            border-radius: 5px; /* Закругление углов */
+            padding: 10px; /* Отступ внутри рамки */
+            margin-bottom: 20px; /* Отступ снизу */
+        }
+
+        .photos-list {
+            list-style: none;
+            padding: 0;
+            display: flex; /* Располагаем фотографии в ряд */
+            flex-wrap: wrap; /* Позволяет фотографиям переноситься на новую строку при нехватке места */
+            justify-content: center; /* Выравниваем фотографии по центру */
+            overflow-x: auto; /* Добавляем горизонтальный скролл при необходимости */
+        }
+
+        .photos-list li {
+            margin: 10px; /* Отступ между фотографиями */
+            text-align: center; /* Центрируем содержимое внутри каждого элемента списка */
+        }
+
+        .photos-list img {
+            max-width: 200px; /* Ограничиваем максимальную ширину фотографий */
+            height: auto;
+            margin: 0 auto; /* Центрируем изображения внутри их контейнера */
+            display: block; /* Делаем изображения блочными элементами, чтобы применялись margin: 0 auto */
+        }
+    </style>
 </head>
 <body>
-    <h1>{{ profile.user.username }}'s Profile</h1>
-    <p>Name: {{ profile.name }}</p>
-    <p>Age: {{ profile.age }}</p>
-    <p>Rating: {{ profile.rating }}</p>
-    <p>{{ profile.bio }}</p>
+    <div id="profile-container">
+        <h1>{{ profile.user.username }}'s Profile</h1>
+        <div class="bio-container">
+            <p>Name: {{ profile.name }}</p>
+            <p>Age: {{ profile.age }}</p>
+            <p>Rating: {{ profile.rating }}</p>
+            <p>{{ profile.bio }}</p>
+        </div>
 
-    <h2>Photos</h2>
-    <ul>
-    {% for photo in photos %}
-        <li>
-            <img src="{{ photo.image.url }}" alt="Photo">
-            <p>Tags: {{ photo.tags }}</p>
-        </li>
-    {% endfor %}
-    </ul>
+        <h2>Photos</h2>
+        <ul class="photos-list">
+            {% for photo in photos %}
+                <li>
+                    <img src="{{ photo.image.url }}" alt="Photo">
+                </li>
+            {% endfor %}
+        </ul>
 
-{#    <h2>Фотографии профиля</h2>#}
-{#       <ul>#}
-{#    {% for photo in profile.photos.all %}#}
-{#        <li>#}
-{#            <img src="{{ photo.image.url }}" alt="Photo">#}
-{#            <p>Tags: {{ photo.tags }}</p>#}
-{#        </li>#}
-{#    {% endfor %}#}
-{#    </ul>#}
-    <div class="profile-image">
-        <img src="{{ profile.photo.url }}" alt="{{ profile.user.username }}">
+        <div class="profile-image">
+            <img src="{{ profile.photo.url }}" alt="{{ profile.user.username }}">
+        </div>
     </div>
 </body>
 </html>

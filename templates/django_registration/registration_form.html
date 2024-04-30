@@ -1,9 +1,49 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<form method="post">
+<form method="post" class="form">
     {% csrf_token %}
-    {{ form }}
-    <input type="submit" value="Submit">
+    {{ form.as_p }}
+    <button type="submit" class="btn">Submit</button>
 </form>
 {% endblock %}
+
+<style>
+    .form {
+        max-width: 400px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f9f9f9;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .form input[type="text"],
+    .form input[type="email"],
+    .form textarea {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+    .form textarea {
+        height: 150px;
+    }
+
+    .form button {
+        padding: 10px 20px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .form button:hover {
+        background-color: #45a049;
+    }
+</style>

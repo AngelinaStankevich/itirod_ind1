@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block content %}
-    <h1 style="color: white;">Выберите пол:</h1>
+    <h1 style="color: #905cc0;">Выберите пол:</h1>
     <form action="{% url 'portfolio:index' %}" method="GET">
         <select name="gender">
             <option value="male">Мужчина</option>
@@ -11,29 +11,31 @@
         <button type="submit">Применить</button>
     </form>
 
-    <h2 style="color: white;">Портфолио:</h2>
-    <ul class="portfolio-list">
+    <h2 style="color: #905cc0;">Портфолио:</h2>
+    <div class="portfolio-list">
         {% for profile in profiles %}
-            <li class="profile-item">
+            <div class="profile-item">
                 <a href="{{ profile.get_absolute_url }}" class="profile-link">
                     <div class="profile-info">
-                        <p class="profile-name">{{ profile.user.username }}</p>
-                        <p class="profile-age">{{ profile.age }} лет</p>
+                        <p class="profile-name-age">{{ profile.user.username }}, {{ profile.age }} лет</p>
                     </div>
                     <img src="{{ profile.photo.url }}" alt="{{ profile.user.username }}" class="profile-photo">
                 </a>
-            </li>
+            </div>
         {% endfor %}
-    </ul>
+    </div>
 {% endblock %}
 
 <style>
     .portfolio-list {
-        list-style: none;
-        padding: 0;
+        display: flex;
+        flex-wrap: nowrap; /* Предотвращаем перенос элементов на новую строку */
+        justify-content: space-between;
+        overflow-x: auto; /* Добавляем горизонтальный скролл при необходимости */
     }
 
     .profile-item {
+        flex: 0 0 calc(33.33% - 20px);
         margin-bottom: 20px;
         border: 1px solid #ccc;
         border-radius: 5px;
@@ -45,29 +47,22 @@
         background-color: #f9f9f9;
     }
 
-    .profile-name {
+    .profile-name-age {
         margin: 0;
         font-size: 18px;
         font-weight: bold;
-    }
-
-    .profile-age {
-        margin: 5px 0;
-        color: #888;
+        color: #000;
     }
 
     .profile-link {
         display: block;
-        text-decoration: none; /* Добавляем стиль ссылке */
+        text-decoration: none;
     }
 
     .profile-photo {
-        max-width: 100px; /* Максимальная ширина фото */
-        max-height: 100px; /* Максимальная высота фото */
+        max-width: 100px;
+        max-height: 100px;
         width: auto;
         height: auto;
-    }
-    h1, h2 {
-        color: white;
     }
 </style>

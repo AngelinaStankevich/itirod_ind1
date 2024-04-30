@@ -9,7 +9,7 @@ class ProfileAdmin(admin.ModelAdmin):
 
 @admin.register(Photo)
 class PhotoAdmin(admin.ModelAdmin):
-    list_display = ['profile', 'image', 'tags', 'nudity_checked']
+    list_display = ['profile', 'image', 'nudity_checked']
 
 
 @admin.register(Comment)
