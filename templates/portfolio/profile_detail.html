@@ -84,6 +84,14 @@
         <div class="profile-image">
             <img src="{{ profile.photo.url }}" alt="{{ profile.user.username }}">
         </div>
+            <form action="{% url 'cart:cart_add' profile.id %}" method="post">
+        {% csrf_token %}
+        {{ cart_product_form }}
+        <button type="submit">Добавить в корзину</button>
+            </form>
+
+<a href="{% url 'cart:cart_detail' %}">Перейти к корзине</a>
+
     </div>
 </body>
 </html>

@@ -25,6 +25,7 @@ urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')),
     path('accounts/logout/', LogoutView.as_view(), name='logout'),
     path('admin/', admin.site.urls),
+    path('cart/', include('cart.urls')),
     path('', include('portfolio.urls', namespace="portfolio")),
 ]
 if settings.DEBUG:
