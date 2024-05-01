@@ -1,5 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
+
+from cart.forms import CartAddProductForm
 from .models import Profile, Photo, Comment
 
 
@@ -11,7 +13,9 @@ def index(request):
 def profile_detail(request, username):
     profile = get_object_or_404(Profile, user__username=username)
     photos = Photo.objects.filter(profile=profile)
-    return render(request, 'portfolio/profile_detail.html', {'profile': profile, 'photos': photos})
+    cart_product_form = CartAddProductForm()  # Здесь необходимо создать форму для добавления в корзину, если она используется
+    return render(request, 'portfolio/profile_detail.html', {'profile': profile, 'photos': photos, 'cart_product_form': cart_product_form})
+
 
 @login_required
 def add_comment(request, photo_id):
